@@ -5,8 +5,9 @@ PyLBFGS is a Python 3 wrapper of the [libLBFGS][libLBFGS] library -- a C port (w
 
 At this time, only the Orthant-Wise Limited-memory Quasi-Newton (OWL-QN) algorithm is exposed (although very little work would be required to expose the full [libLBFGS][libLBFGS] implementation).
 
-Also note that PyLBFGS has only been compiled and tested with Python 3 on a 64-bit Ubuntu machine. It should work in other environments... but tweaking the installation commands is a task left to the reader.
+Also note that PyLBFGS has only been compiled and tested with Python 3 on a 64-bit Ubuntu machine and a 64-bit Windows machine. It should work in other environments... but tweaking the installation commands is a task left to the reader.
 
+In order to compile on Windows one simply has to remove the "runtime_library_dirs" line in setup.py, and modify the library/include dirs to point to your install. You must also add the x64 build target when building libLBFGS in visual studio if compiling for a x64 machine and version of python.
 
 
 Install
@@ -27,7 +28,7 @@ Install
 
 3. Setup and activate a virtual environment (modify the Python version if necessary):
 
-        virtualenv -p python3.6 --prompt="(pylbfgs) " .venv
+        virtualenv -p python3.12.9 --prompt="(pylbfgs) " .venv
         . .venv/bin/activate
 
 4. Install the project:
@@ -83,7 +84,7 @@ Examples
 
 See the *example.py* script for an advanced example in which we use compressed sensing to reconstruct a sparsely sampled image. A more thorough example of compressed sensing (using PyLBFGS) can be found on my weblog [here][blog_post].
 
-    pip install Pillow==5.0.0 scipy==1.0.0 matplotlib==2.1.2
+    pip install Pillow==11.1.0 scipy==1.15.2 matplotlib==3.1.0
     python example.py
 
 
