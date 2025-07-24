@@ -4,6 +4,7 @@ import os
 import numpy as np
 import scipy.fftpack as spfft
 import scipy.ndimage as spimg
+import imageio
 import matplotlib.pyplot as plt
 from pylbfgs import owlqn
 
@@ -178,8 +179,12 @@ def main():
 
     global _b_vector, _A_matrix, _image_dims, _ri_vector
 
-    # read image in grayscale, then downscale it
-    Xorig = spimg.imread(ORIG_IMAGE_PATH, flatten=True, mode='L')
+    # read image in, then convert to grayscale and then downscale it
+    Xorig = imageio.imread(ORIG_IMAGE_PATH)
+    # Cast to float before grayscale conversion
+    Xorig = Xorig.astype(float)
+    # Preserving the behaviour of mode='L' from the deprecated scipy.ndimage.imread
+    Xorig = Xorig[:, :, 0] * 299/1000 + Xorig[:, :, 1] * 587/1000 + Xorig[:, :, 2] * 114/1000 
     X = spimg.zoom(Xorig, SCALE)
     ny, nx = X.shape
 
