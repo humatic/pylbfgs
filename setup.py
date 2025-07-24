@@ -1,6 +1,5 @@
 from distutils.core import setup, Extension
-import numpy.distutils.misc_util
-
+import numpy 
 
 with open('README.md', 'r') as f:
     readme = f.read()
@@ -18,7 +17,7 @@ ext_modules = [
         libraries=['lbfgs'],
         library_dirs=['/usr/local/lib'],
         include_dirs=['/usr/local/include'] + (
-            numpy.distutils.misc_util.get_numpy_include_dirs()
+            [numpy.get_include()]
         ),
         runtime_library_dirs=['/usr/local/lib'],
         ),
