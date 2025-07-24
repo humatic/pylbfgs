@@ -269,9 +269,9 @@ def main():
 
     # display the result
     f, ax = plt.subplots(1, 3, figsize=(14, 4))
-    ax[0].imshow(X, cmap='hot', interpolation='none')
-    ax[1].imshow(Xm, cmap='hot', interpolation='none')
-    ax[2].imshow(Xa, cmap='hot', interpolation='none')
+    ax[0].imshow(X, cmap='hot', interpolation='none',vmin=0, vmax=255)
+    ax[1].imshow(Xm, cmap='hot', interpolation='none',vmin=0, vmax=255)
+    ax[2].imshow(Xa, cmap='hot', interpolation='none',vmin=0, vmax=255)
     plt.show()
 
 
